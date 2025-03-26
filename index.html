@@ -58,6 +58,7 @@
         li{
             list-style: none;
         }
+
         
 
     </style>
@@ -80,7 +81,6 @@
         <div class="displayTask">
             <ul id="task"></ul>
         </div>
-
     
     </main>
     <script>
@@ -89,7 +89,8 @@
         const errorMsg = document.getElementById("errorMsg");
         const date = document.getElementById("date");
         const task = document.getElementById("task");
-
+        let count = 0;
+        
         btn.addEventListener("click",()=>{
             if(taskInput.value.trim() === ""){ 
                 // 空白の時orスペースのとき
@@ -118,12 +119,32 @@
             //  日付の `span` を作る
             const dateSpan = document.createElement("span");
             dateSpan.textContent = date.value;
+            dateSpan.style.marginRight = "10px"; 
+
+            //  削除ボタンを作る
+            const del = document.createElement("button");
+            del.textContent = "削除";
+                    
+            
             li.appendChild(checkbox);
             li.append(taskSpan);
             li.append(dateSpan);
+            li.append(del);
             task.appendChild(li);
+
+            del.addEventListener("click",()=>{
+                li.innerHTML = "";
+            })
+
+            checkbox.addEventListener("change",()=>{
+                count  ++ ;
+                console.log(count);
+            })
+            
+            
         }
-                
+            
+            
     </script>
 </body>
 </html>
